@@ -38,10 +38,10 @@ A capa deste livro usa uma bela foto tirada por https://unsplash.com/@siloine?ut
 Um grande "obrigado" a todos os colaboradores do GitHub que mantêm este livro vivo. Em ordem alfabética:
 
 * https://github.com/airdry[airdry]
+* https://github.com/cuilei5205189[cuilei5205189]
+* https://github.com/franklinjosmell[franklinjosmell]
 * https://github.com/joathan[joathan]
 * https://github.com/Landris18[Landris18]
 * https://github.com/lex111[lex111]
-* https://github.com/cuilei5205189[cuilei5205189]
-* https://github.com/franklinjosmell[franklinjosmell]
 * https://github.com/notapatch[notapatch]
 * https://github.com/tacataca[tacataca]
