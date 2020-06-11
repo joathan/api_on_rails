@@ -18,9 +18,9 @@ Como queremos que o aplicativo seja simples, ele será composto por 5 modelos. N
 
 image:data_model.png[Esquema de relacionamento entre modelos]
 
-Em resumo, o `user`(usuário) poderá fazer muitas `orders`(pedidos), fazer upload de vários `produtos` que podem ter muitas `images` (imagens) ou `comments` (comentários) de outros usuários do aplicativo.
+Em resumo, o `user` (usuário) poderá fazer muitos `orders` (pedidos), fazer upload de vários `produtos` que podem ter muitas `images` (imagens) ou `comments` (comentários) de outros usuários do aplicativo.
 
-Não criaremos visualizações para exibir ou interagir com a API. Portanto, não faça deste um ótimo tutorial. Para isso, existem muitas opções por aí, como os frameworks javascript (https://angularjs.org/[Angular], https://vuejs.org/[Vue.js], https://reactjs.org/[React.js]).
+Não criaremos `views` (visualizações) para exibir ou interagir com a API. Portanto, não faça deste um ótimo tutorial. Para isso, existem muitas opções por aí, como os frameworks javascript (https://angularjs.org/[Angular], https://vuejs.org/[Vue.js], https://reactjs.org/[React.js]).
 
 
 Até este ponto, você deve se perguntar:
@@ -31,11 +31,11 @@ Isso é justo. Provavelmente, se você pesquisar no Google algo relacionado à e
 
 == Configurando a API
 
-Uma API é definida pela http://en.wikipedia.org/wiki/Application_programming_interface[wikipedia] como uma interface de programação de aplicativos (API) especifica como alguns componentes de software devem interagir entre si. Em outras palavras, a maneira como os sistemas interagem entre si através de uma interface comum, no nosso caso, um serviço web construído com JSON.Existem outros tipos de protocolos de comunicação como SOAP, mas nós não estamos cobrindo isso aqui.
+Uma API é definida pela http://en.wikipedia.org/wiki/Application_programming_interface[wikipedia] como uma interface de programação de aplicativos (API) especifica como alguns componentes de software devem interagir entre si. Em outras palavras, a maneira como os sistemas interagem entre si através de uma interface comum, no nosso caso, um serviço web construído com JSON. Existem outros tipos de protocolos de comunicação como SOAP, mas nós não estamos cobrindo isso aqui.
 
 JSON, como padrão de tipo de mídia da Internet, é amplamente aceito, legível, extensível e fácil de implementar. Muitas das atuais estruturas consomem APIs JSON por padrão (https://angularjs.org/[Angular] ou https://vuejs.org/[Vue.js] por exemplo). Também existem ótimas bibliotecas para Objective-C, como https://github.com/AFNetworking/AFNetworking[AFNetworking] ou http://restkit.org/[RESTKit]. Provavelmente existem boas soluções para Android mas por causa da minha falta de experiência nessa plataforma de desenvolvimento eu posso não ser a pessoa certa para recomendar alguma coisa.
 
-Tudo certo. Então, estamos construindo nossa API com JSON. Existem muitos caminhos para alcançar isto. A primeira coisa que vem à mente seria apenas comece a adicionar rotas definindo os end points. Isso pode ser ruim porque eles podem não ter um http://www.w3.org/2005/Incubator/wcl/matching.html[padrão de URI] claro o suficiente para saber qual recurso está sendo exposto. O protocolo ou estrutura que estou falando é http://en.wikipedia.org/wiki/Representational_state_transfer[REST] que significa Representational State Transfer(Transferência Representacional de Estado) seguindo a definição da wikipedia.
+Tudo certo. Então, estamos construindo nossa API com JSON. Existem muitos caminhos para alcançar isto. A primeira coisa que vem à mente seria apenas comece a adicionar rotas definindo os endpoints. Isso pode ser ruim porque eles podem não ter um http://www.w3.org/2005/Incubator/wcl/matching.html[padrão de URI] claro o suficiente para saber qual recurso está sendo exposto. O protocolo ou estrutura que estou falando é http://en.wikipedia.org/wiki/Representational_state_transfer[REST] que significa Representational State Transfer (Transferência Representacional de Estado) seguindo a definição da wikipedia.
 
 [source,soap]
 ----
@@ -104,8 +104,6 @@ Rails.application.routes.draw do
 end
 ----
 
-Por definición un espacio de nombres en el archivo `routes.rb`. Rails automáticamente mapeara que espacio de nombres corresponde al folder de los _controlladores_, en nuestro caso el directorio `api/``.
-
 Definindo um namespace no arquivo `routes.rb`. Rails mapeia automaticamente esse namespace para um diretório que corresponde ao nome
 da pasta _controllers_, no nosso caso o diretório `api/`.
 
@@ -116,7 +114,7 @@ O Rails suporta 34 tipos diferentes de arquivos multimídia. Você pode listá-l
 [source,bash]
 ----
 $ rails c
-2.6.3 :001 > Mime::SET.collect(&:to_s)
+2.6.6 :001 > Mime::SET.collect(&:to_s)
  => ["text/html", "text/plain", "text/javascript", "text/css", "text/calendar", "text/csv", "text/vcard", "text/vtt", "image/png", "image/jpeg", "image/gif", "image/bmp", "image/tiff", "image/svg+xml", "video/mpeg", "audio/mpeg", "audio/ogg", "audio/aac", "video/webm", "video/mp4", "font/otf", "font/ttf", "font/woff", "font/woff2", "application/xml", "application/rss+xml", "application/atom+xml", "application/x-yaml", "multipart/form-data", "application/x-www-form-urlencoded", "application/json", "application/pdf", "application/zip", "application/gzip"]
 ----
 ****
@@ -158,7 +156,7 @@ Rails.application.routes.draw do
 end
 ----
 
-Agora é hora de configurar outras constraints (restrições) para controle de versão. Você deve se importar em versionar sua aplicação desde inicio, pois isso dará uma estrutura melhor à sua api, e quando precisam ser feitas mudanças, você pode dar aos desenvolvedores que estão consumindo sua API a oportunidade de se adaptar aos novos recursos enquanto os antigos estão sendo preteridos. Existe um excelente http://railscasts.com/episodes/350-rest-api-versioning[railscast] explicando isso.
+Agora é hora de configurar outras constraints (restrições) para controle de versão. Você deve se importar em versionar sua aplicação desde inicio, pois isso dará uma estrutura melhor à sua api, e quando for necessário fazer mudanças, você pode dar aos desenvolvedores que estão consumindo sua API a oportunidade de se adaptar aos novos recursos enquanto os antigos estão sendo descontinuados. Existe um excelente http://railscasts.com/episodes/350-rest-api-versioning[railscast] explicando isso.
 
 Para definir a versão da API, primeiro precisamos adicionar outro
 diretório sob a `api` que criamos:
@@ -185,7 +183,7 @@ end
 
 Nesse ponto, a API agora tem um escopo definido pela URL. Por exemplo, com a configuração atual, um endpoint para recuperar um produto seria algo como: <http://localhost:3000/v1/products/1>
 
-.Patrones Comunes del API
+.Padrões comuns de API
 ****
 
 Você pode encontrar muitas abordagens para configurar a _base_uri_ ao criar uma API seguindo padrões diferentes, assumindo que estamos fazendo versionamento na nossa API:
