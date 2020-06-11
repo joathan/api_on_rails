@@ -182,7 +182,7 @@ NOTE: A opção `--api` apareceu na versão 5 do Rails. Isso permite limitar as 
 
 Como você pode adivinhar, os comandos anteriores irão gerar a base do seu aplicativo Rails.
 
-== Versionando
+== Versionamento
 
 Lembre-se de que o Git ajuda a rastrear e manter o histórico do seu código. Lembre-se de que o código fonte do aplicativo é publicado no GitHub. Você pode acompanhar o projeto em https://github.com/madeindjs/api_on_rails_6[GitHub].
 
@@ -222,7 +222,7 @@ O Rails também fornece um arquivo _.gitignore_ para ignorar alguns arquivos que
 /config/master.key
 ----
 
-Após modificar o arquivo _.gitignore_, precisamos apenas adicionar os arquivos e _commitir_ as alterações, para isso usamos os seguintes comandos:
+Após modificar o arquivo _.gitignore_, precisamos apenas adicionar os arquivos e _commitar_ as alterações, para isso usamos os seguintes comandos:
 
 [source,bash]
 ----
@@ -230,7 +230,7 @@ $ git add .
 $ git commit -m "Commit Inicial"
 ----
 
-TIP: Descobri que a mensagem de confirmação deve começar com um verbo no tempo presente, descrevendo o que a confirmação faz e não o que fez; isso ajuda quando você está explorando o histórico do projeto. Achei isso mais natural de ler e entender. Continuaremos esta prática até o final do tutorial.
+TIP: Descobri que a mensagem de confirmação deve começar com um verbo no tempo presente, descrevendo o que o commit faz e não o que fez; isso ajuda quando você está explorando o histórico do projeto. Achei isso mais natural de ler e entender. Continuaremos esta prática até o final do tutorial.
 
 Finalmente e como uma etapa opcional, configuramos o projeto no GitHub e fazemos _push_ do nosso código no servidor remoto: Mas primeiro adicionamos o _remote_:
 
@@ -239,14 +239,14 @@ Finalmente e como uma etapa opcional, configuramos o projeto no GitHub e fazemos
 $ git remote add origin git@github.com:madeindjs/market_place_api_6.git
 ----
 
-Em seguida, executamos o código _push_:
+Em seguida, executamos o _push_:
 
 [source,bash]
 ----
 $ git push -u origin master
 ----
 
-À medida que avançamos no tutorial, usarei as práticas que uso diariamente, isso inclui trabalhar com `branches`,` rebasing`, `squash` e outras coisas. Por enquanto, você não deve se preocupar se alguns desses termos não lhe parecerem familiares, eu explicarei com o tempo.
+À medida que avançamos no tutorial, usarei as práticas que uso diariamente, isso inclui trabalhar com `branches`, `rebasing`, `squash` e outras coisas. Por enquanto, você não deve se preocupar se alguns desses termos não lhe parecerem familiares, eu explicarei com o tempo.
 
 == Conclusão
 
