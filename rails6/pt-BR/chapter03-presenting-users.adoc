@@ -3,7 +3,7 @@
 
 No último capítulo, configuramos o esqueleto para a configuração dos enpoints em nossa aplicação.
 
-Em um próximo capítulo, trataremos da autenticação do usuário através da autenticação de token, definindo permissões para definir limites de acesso, perguntando qual usuário é autenticado. Nos próximos capítulos, relacionaremos `products` (produtos) com os `users` (usuários) e forneceremos a capacidade de gerar pedidos.
+Em um próximo capítulo, trataremos da autenticação do usuário através da autenticação por token, definindo permissões para limites de acesso, sabendo qual usuário está autenticado. Nos próximos capítulos, relacionaremos `products` (produtos) com os `users` (usuários) e forneceremos a capacidade de gerar pedidos.
 
 Você pode clonar o projeto até este ponto com:
 
@@ -26,7 +26,7 @@ Sinta-se livre para tomar um café e vamos. No final deste capítulo, você ter�
 $ git checkout -b chapter03
 ----
 
-NOTE: Certifique-se de estar no `branch` `master` antes de fazer _checkout_.
+NOTE: Certifique-se de estar na `branch master` antes de fazer _checkout_.
 
 == Modelo de usuário
 
@@ -112,8 +112,6 @@ NOTE: Este comando converterá nossa migração em uma consulta SQL que atualiza
 
 ==== Modelo
 
-Ruby on Rails provee un mecanismo completo que puedes encontrar en https://guides.rubyonrails.org/active_record_validations.html[su documentación oficial]. En nuestro caso buscamos validar solo 3 cosas:
-
 É assim que definimos nosso esquema de banco de dados. O próximo passo é atualizar nosso modelo para definir *regras de validação*. Essas regras são definidas no modelo localizado na pasta `app/models`.
 
 O Ruby on Rails fornece um mecanismo completo que você pode encontrar https://guides.rubyonrails.org/active_record_validations.html[na sua documentação oficial]. No nosso caso, procuramos validar apenas três coisas:
@@ -138,8 +136,8 @@ Ai está. O Rails usa uma sintaxe muito simples e o código é muito legível.
 
 .Validação de email
 ****
-Você pode perceber que a validação de email usa um método simplista
-validação verificando apenas a presença de um `@`.
+Você pode perceber que a validação de email usa um método simples
+para validar, verificando apenas a presença de um `@`.
 
 Isso é normal.
 
@@ -153,9 +151,9 @@ Terminamos com os testes de unidade. Aqui usaremos o Minitest, uma estrutura de 
 O Minitest é baseado em _Fixtures_ que permitem preencher seu banco de dados com dados *predefinidos*. _Fixtures_ são definidas em um arquivo YAML no diretório `tests/fixtures`. Há um arquivo de modelo.
 
 
-Portanto, devemos começar a atualizar nossos `tests/fixtures'.
+Portanto, devemos começar a atualizar nossos `tests/fixtures`.
 
-NOTE: _fixtures_ não foram projetados para criar todos os dados que seus testes precisam. Eles permitem apenas definir os dados básicos de que seu aplicativo precisa.
+NOTE: _fixtures_ não foram projetadas para criar todos os dados que seus testes precisam. Eles permitem apenas definir os dados básicos de que seu aplicativo precisa.
 
 Então começamos criando uma _fixture_ definindo um usuário:
 
@@ -226,7 +224,7 @@ $ git add . && git commit -m "Create user model"
 
 Anteriormente, implementamos o armazenamento de dados do usuário. Mas ainda temos um problema a resolver: *o armazenamento da senha está em texto simples*.
 
-> Se você armazena a senha dos usuários em texto sem formatação, um invasor que rouba uma cópia do seu banco de dados possui uma lista gigante de emails e senhas. Alguns de seus usuários só podem ter uma senha - para a conta de email, a conta bancária e sua aplicação. Um simples hack pode fazer um grande roubo de identidades. - https://github.com/codahale/bcrypt-ruby#why-you-should-use-bcrypt[fonte - Por que você deve usar o bcrypt]
+> Se você armazena a senha dos usuários em texto sem formatação, um invasor que rouba uma cópia do seu banco de dados possui uma lista gigante de emails e senhas. Alguns de seus usuários só podem ter uma senha - para a conta de email, a conta bancária e sua aplicação. Um simples hacker pode fazer um grande roubo de identidades. - https://github.com/codahale/bcrypt-ruby#why-you-should-use-bcrypt[fonte - Por que você deve usar o bcrypt]
 
 Então, vamos usar a gem bcrypt para *hash* da senha.
 
@@ -306,8 +304,8 @@ $ git commit -am "Setup Bcrypt"
 
 Vamos nos concentrar primeiro na geração do controlador (controller) e no teste funcional.
 
-Para respeitar a visualização da nossa API, reduziremos nossa
-aplicação usando *modules* (módulos). A sintaxe é, portanto, da seguinte maneira:
+Para respeitar a visualização da nossa API, quebraremos nossa
+aplicação em *modules* (módulos). A sintaxe é, portanto, da seguinte maneira:
 
 [source,bash]
 ----
@@ -526,7 +524,7 @@ $ rails test
 6 runs, 9 assertions, 0 failures, 0 errors, 0 skips
 ----
 
-sim! Vamos da um _commit_ as mudanças e continuar construindo nosso aplicativo:
+sim! Vamos da um _commit_ nas mudanças e continuar construindo nosso aplicativo:
 
 [source,bash]
 ----
@@ -560,7 +558,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
 end
 ----
 
-Para que o teste seja bem-sucedido, precisamos construir a ação de atualização no arquivo `users_controller.rb` e adicionar a rota ao arquivo `routes.rb`. Como você pode ver, temos muito código duplicado, vamos redesenhar nosso teste no capítulo 4. Primeiro, adicionamos a ação ao arquivo `routes.rb`:
+Para que o teste seja bem-sucedido, precisamos construir a ação de atualização no arquivo `users_controller.rb` e adicionar a rota ao arquivo `routes.rb`. Como você pode ver, temos muito código duplicado, vamos redesenhar nossos testes no capítulo 4. Primeiro, adicionamos a ação ao arquivo `routes.rb`:
 
 [source,ruby]
 .config/routes.rb
@@ -624,7 +622,7 @@ $ git commit -am "Adds update action the users controller"
 
 === Deletar usuário
 
-Até o momento, realizamos várias ações no controlador de usuário com estes, mas ainda não concluímos. Só precisamos de mais uma coisa, que é a açãp de excluir. Então, vamos criar o teste:
+Até o momento, realizamos várias ações no controlador de usuário com testes, mas ainda não concluímos. Só precisamos de mais uma coisa, que é a ação de excluir. Então, vamos criar o teste:
 
 [source,ruby]
 .test/controllers/users_controller_test.rb
@@ -642,7 +640,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
 end
 ----
 
-Como você pode ver, o teste é muito simples. Nós respondemos apenas com o status *204*, que significa `No Content` (Sem conteúdo). Também podemos retornar um código de status *200*, mas acho a resposta `No Content` mais natural nesse caso, porque excluimos um recurso e uma resposta bem-sucedida pode ser o bastante.
+Como você pode ver, o teste é muito simples. Nós respondemos apenas com o status *204*, que significa `No Content` (Sem conteúdo). Também podemos retornar um código de status *200*, mas acho a resposta `No Content` mais natural nesse caso, porque excluímos um recurso e uma resposta bem-sucedida pode ser o bastante.
 
 A implementação da ação de exclusão é muito simples:
 
